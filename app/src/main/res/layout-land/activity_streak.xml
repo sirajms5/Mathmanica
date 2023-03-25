@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:multi_line_radio_group="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/streakLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StreakActivity">
+
+    <RelativeLayout
+        android:id="@+id/streakRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/streakFirstNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_number"
+            android:textColor="#ff7f00"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/streakSecondNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/streakOperationTxt"
+            android:text="@string/default_number"
+            android:textColor="#ff7f00"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/streakOperationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/streakFirstNumTxt"
+            android:text="@string/addition"
+            android:textColor="@color/yellow_caryola"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/streakEqualSignTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/streakSecondNumTxt"
+            android:text="@string/equal"
+            android:textColor="#ee00ffff"
+            android:textSize="50sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/streakQuestionMarkRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/streakRelativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/streakRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/streakRelativeLayout">
+
+        <TextView
+            android:id="@+id/streakQuestionMarkTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_mark"
+            android:textColor="@color/green"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/streakQuestionMark_2Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/streakQuestionMarkTxt"
+            android:text="@string/question_mark"
+            android:textColor="@color/red"
+            android:textSize="55sp" />
+    </RelativeLayout>
+
+    <com.whygraphics.multilineradiogroup.MultiLineRadioGroup
+        android:id="@+id/streakChoicesRadioGroup"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/streakRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/streakQuestionMarkRelativeLayout"
+        multi_line_radio_group:max_in_row="2">
+
+        <RadioButton
+            android:id="@+id/streakFirstChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/first_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/streakSecondChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/second_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/streakThirdChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/third_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/streakFourthChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/fourth_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+    </com.whygraphics.multilineradiogroup.MultiLineRadioGroup>
+
+
+    <TextView
+        android:id="@+id/streakScoreTitleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/your_streak"
+        android:textAllCaps="true"
+        android:textColor="#DCF763"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/streakNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/default_number_x2"
+        android:textSize="75sp"
+        app:layout_constraintEnd_toEndOf="@+id/streakScoreTitleTxt"
+        app:layout_constraintStart_toStartOf="@+id/streakScoreTitleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/streakScoreTitleTxt" />
+
+
+    <RelativeLayout
+        android:id="@+id/streakBtnsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/streakNumTxt"
+        app:layout_constraintStart_toEndOf="@id/streakRelativeLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/streakSubmitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/submit"
+            app:cornerRadius="30dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/streakNextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/streakSubmitBtn"
+            android:layout_marginTop="20dp"
+            android:enabled="false"
+            android:text="@string/next"
+            app:cornerRadius="30dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/streakRetryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@id/streakNextBtn"
+            android:enabled="false"
+            android:text="@string/retry"
+            android:visibility="gone"
+            app:cornerRadius="30dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/streakDifficultyModeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/streak_mode"
+        android:textColor="@color/yellow_caryola"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/streakNumTxt"
+        app:layout_constraintStart_toStartOf="@id/streakNumTxt"
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+    <TextView
+        android:id="@+id/bonusStreakTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_1"
+        android:textColor="@color/green"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/streakNumTxt"
+        app:layout_constraintTop_toTopOf="@+id/streakNumTxt" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="448dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

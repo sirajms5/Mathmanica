@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:multi_line_radio_group="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quickGameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuickGameActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/firstNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_number"
+            android:textColor="#ff7f00"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/secondNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/operationTxt"
+            android:text="@string/default_number"
+            android:textColor="#ff7f00"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/operationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/firstNumTxt"
+            android:text="@string/addition"
+            android:textColor="@color/yellow_caryola"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/equalSignTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/secondNumTxt"
+            android:text="@string/equal"
+            android:textColor="#ee00ffff"
+            android:textSize="50sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/questionMarkRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <TextView
+            android:id="@+id/questionMarkTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_mark"
+            android:textColor="@color/green"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/questionMark_2Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/questionMarkTxt"
+            android:text="@string/question_mark"
+            android:textColor="@color/red"
+            android:textSize="55sp" />
+    </RelativeLayout>
+
+    <com.whygraphics.multilineradiogroup.MultiLineRadioGroup
+        android:id="@+id/choicesRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionMarkRelativeLayout"
+        multi_line_radio_group:max_in_row="2">
+
+        <RadioButton
+            android:id="@+id/firstChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/first_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/secondChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/second_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/thirdChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/third_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/fourthChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/fourth_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+    </com.whygraphics.multilineradiogroup.MultiLineRadioGroup>
+
+
+    <TextView
+        android:id="@+id/scoreTitleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/your_score"
+        android:textColor="#DCF763"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnsLayout" />
+
+    <TextView
+        android:id="@+id/scoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/default_number_x2"
+        android:textSize="75sp"
+        app:layout_constraintEnd_toEndOf="@+id/scoreTitleTxt"
+        app:layout_constraintStart_toStartOf="@+id/scoreTitleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTitleTxt" />
+
+    <TextView
+        android:id="@+id/difficultyModeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/easy"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/btnsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choicesRadioGroup">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/submit"
+            app:cornerRadius="30dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@id/submitBtn"
+            android:enabled="false"
+            android:text="@string/next"
+            app:cornerRadius="30dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/levelNumTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/level"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/levelNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/level_num"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/levelNumTitle" />
+
+    <TextView
+        android:id="@+id/quickGameBonusTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_25"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/scoreTxt"
+        app:layout_constraintTop_toTopOf="@+id/scoreTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

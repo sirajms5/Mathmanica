@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_bg">
+
+    <TextView
+        android:id="@+id/deletingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/canceling_permissions"
+        android:textColor="@color/white_shaded"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deletingMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/cancel_permissions_dialog_text"
+        android:textColor="@color/white_shaded"
+        app:layout_constraintStart_toStartOf="@+id/deletingTitle"
+        app:layout_constraintTop_toBottomOf="@+id/deletingTitle"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <TextView
+        android:id="@+id/noTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:paddingBottom="10dp"
+        android:text="@string/no"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toStartOf="@+id/yesTxt"
+        app:layout_constraintTop_toTopOf="@+id/yesTxt" />
+
+    <TextView
+        android:id="@+id/yesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:paddingBottom="10dp"
+        android:text="@string/yes"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deletionPasswordRequirement" />
+
+    <TextView
+        android:id="@+id/cancelationSplitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cutter"
+        android:textColor="@color/white_shaded_x4"
+        app:layout_constraintEnd_toStartOf="@+id/yesTxt"
+        app:layout_constraintStart_toEndOf="@+id/noTxt"
+        app:layout_constraintTop_toTopOf="@+id/noTxt" />
+
+    <EditText
+        android:id="@+id/deletionPasswordRequirement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:autofillHints="Password"
+        android:backgroundTint="@color/white_shaded_x2"
+        android:ems="10"
+        android:hint="@string/password_with_3_dots"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:minHeight="48dp"
+        android:textColor="@color/white_shaded_x2"
+        android:textColorHint="@color/white_shaded_x2"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/deletingMessage"
+        app:layout_constraintTop_toBottomOf="@+id/deletingMessage"
+        app:layout_constraintWidth_percent="0.6" />
+
+    <TextView
+        android:id="@+id/deletionPasswordError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wrong_password"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/deletionPasswordRequirement"
+        app:layout_constraintTop_toBottomOf="@+id/deletionPasswordRequirement" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

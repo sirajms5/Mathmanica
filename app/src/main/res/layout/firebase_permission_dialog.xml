@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_bg">
+
+    <TextView
+        android:id="@+id/permissionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/statistics_permission"
+        android:textColor="@color/white_shaded"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/permissionMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/statistic_permission_dialog_text"
+        android:textColor="@color/white_shaded"
+        app:layout_constraintStart_toStartOf="@+id/permissionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/permissionTitle"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <TextView
+        android:id="@+id/dismissTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/deny"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toStartOf="@+id/allowTxt"
+        app:layout_constraintTop_toTopOf="@+id/allowTxt" />
+
+    <TextView
+        android:id="@+id/allowTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/allow"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/permissionCheckBox" />
+
+    <CheckBox
+        android:id="@+id/permissionCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/dont_show_message"
+        android:textColor="@color/white_shaded"
+        app:layout_constraintStart_toStartOf="@+id/permissionMessage"
+        app:layout_constraintTop_toBottomOf="@+id/permissionMessage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

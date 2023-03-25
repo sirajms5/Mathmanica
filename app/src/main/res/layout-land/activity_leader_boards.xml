@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    tools:context=".LeaderBoardsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/rank_3_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/rank_3_user" />
+
+        <TextView
+            android:id="@+id/rank_7_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/num7" />
+
+        <TextView
+            android:id="@+id/rank_2_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/rank_2_user" />
+
+        <TextView
+            android:id="@+id/rank_8_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/rank_8_user" />
+
+        <TextView
+            android:id="@+id/rank_5_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/num5" />
+
+        <TextView
+            android:id="@+id/rank_10_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/num10" />
+
+        <TextView
+            android:id="@+id/rank_4_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/rank_4_user" />
+
+        <TextView
+            android:id="@+id/rank_6_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/rank_6_user" />
+
+        <TextView
+            android:id="@+id/rank_9_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/num9" />
+
+        <TextView
+            android:id="@+id/rank_1_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/rank_1_user" />
+
+        <TextView
+            android:id="@+id/rank_2_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num2"
+            app:layout_constraintTop_toTopOf="@+id/num2" />
+
+        <TextView
+            android:id="@+id/rank_7_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num7"
+            app:layout_constraintTop_toTopOf="@+id/num7" />
+
+        <TextView
+            android:id="@+id/rank_3_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num3"
+            app:layout_constraintTop_toTopOf="@+id/num3" />
+
+        <TextView
+            android:id="@+id/rank_1_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num1"
+            app:layout_constraintTop_toTopOf="@+id/num1" />
+
+        <TextView
+            android:id="@+id/rank_5_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num5"
+            app:layout_constraintTop_toTopOf="@+id/num5" />
+
+        <TextView
+            android:id="@+id/rank_10_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num10"
+            app:layout_constraintTop_toTopOf="@+id/num10" />
+
+        <TextView
+            android:id="@+id/rank_4_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num4"
+            app:layout_constraintTop_toTopOf="@+id/num4" />
+
+        <TextView
+            android:id="@+id/rank_6_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num6"
+            app:layout_constraintTop_toTopOf="@+id/num6" />
+
+        <TextView
+            android:id="@+id/rank_9_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num9"
+            app:layout_constraintTop_toTopOf="@+id/num9" />
+
+        <TextView
+            android:id="@+id/rank_8_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/num8"
+            app:layout_constraintTop_toTopOf="@+id/num8" />
+
+        <TextView
+            android:id="@+id/leaderBoardsQuickGameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/quick_game"
+            android:textColor="@color/green_shaded_x3"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/leaderBoardsTitleTxt" />
+
+        <TextView
+            android:id="@+id/leaderBoardsTimeTrialTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/time_trial"
+            android:textColor="@color/green"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsStreakTxt" />
+
+        <TextView
+            android:id="@+id/leaderBoardsStreakTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/streak"
+            android:textColor="@color/green"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/leaderBoardsTimeTrialTxt"
+            app:layout_constraintStart_toEndOf="@+id/leaderBoardsQuickGameTxt"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsQuickGameTxt" />
+
+        <TextView
+            android:id="@+id/leaderBoardsVeryEasyTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/very_easy"
+            android:textColor="@color/aqua"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/leaderBoardsQuickGameTxt" />
+
+        <TextView
+            android:id="@+id/leaderBoardsEasyTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/easy"
+            android:textColor="@color/green_shaded_x3"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
+            app:layout_constraintStart_toEndOf="@+id/leaderBoardsVeryEasyTxt"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <TextView
+            android:id="@+id/leaderBoardsMediumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/medium"
+            android:textColor="@color/yellow"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <TextView
+            android:id="@+id/leaderBoardsHardTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/knewave"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/hard"
+            android:textColor="@color/red"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <TextView
+            android:id="@+id/num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num1"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <TextView
+            android:id="@+id/num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num2"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/rank_1_user" />
+
+        <TextView
+            android:id="@+id/num4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num4"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num3" />
+
+        <TextView
+            android:id="@+id/num5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num5"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num4" />
+
+        <TextView
+            android:id="@+id/num6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num6"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num5" />
+
+        <TextView
+            android:id="@+id/num3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num3"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/rank_2_user" />
+
+        <TextView
+            android:id="@+id/num7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num7"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num6" />
+
+        <TextView
+            android:id="@+id/num8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num8"
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num7" />
+
+        <TextView
+            android:id="@+id/num9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num9"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num8" />
+
+        <TextView
+            android:id="@+id/num10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/num10"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num9" />
+
+        <TextView
+            android:id="@+id/userRankNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unregistered_rank"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/userScoreTitleTxt" />
+
+        <TextView
+            android:id="@+id/userScoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/userRankNumTxt"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/userRankNumTxt" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/userUsernameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dashes_x2"
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/userRankNumTxt"
+            app:layout_constraintStart_toEndOf="@+id/userRankNumTxt"
+            app:layout_constraintTop_toTopOf="@+id/userRankNumTxt" />
+
+        <TextView
+            android:id="@+id/userScoreTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/your_rank"
+            android:textColor="@color/yellow_caryola"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/num10" />
+
+        <TextView
+            android:id="@+id/leaderBoardsTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/sonsie_one"
+            android:text="@string/leaderboards"
+            android:textAllCaps="true"
+            android:textColor="@color/orange_pantone"
+            android:textSize="24sp"
+            app:drawableLeftCompat="@drawable/ic_star"
+            app:drawableRightCompat="@drawable/ic_star"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/gameModeSplitter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/cutter"
+            android:textColor="@color/white_shaded_x4"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/leaderBoardsStreakTxt"
+            app:layout_constraintStart_toEndOf="@+id/leaderBoardsQuickGameTxt"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsQuickGameTxt" />
+
+        <TextView
+            android:id="@+id/gameModeSplitter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/cutter"
+            android:textColor="@color/white_shaded_x4"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/leaderBoardsTimeTrialTxt"
+            app:layout_constraintStart_toEndOf="@+id/leaderBoardsStreakTxt"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsQuickGameTxt" />
+
+        <TextView
+            android:id="@+id/quickGameSplitter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/cutter"
+            android:textColor="@color/white_shaded_x4"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintStart_toStartOf="@+id/guideline10"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <TextView
+            android:id="@+id/quickGameSplitter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/cutter"
+            android:textColor="@color/white_shaded_x4"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <TextView
+            android:id="@+id/quickGameSplitter3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/cutter"
+            android:textColor="@color/white_shaded_x4"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toTopOf="@+id/leaderBoardsVeryEasyTxt" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.775" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.225" />
+
+        <ProgressBar
+            android:id="@+id/leaderBoardsProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="64dp"
+            android:layout_height="60dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/guideline18"
+            app:layout_constraintEnd_toEndOf="@+id/guideline9"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@id/guideline18" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.315" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

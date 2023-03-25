@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_bg">
+
+    <TextView
+        android:id="@+id/streakDialogTitleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/knewave"
+        android:text="@string/your_streak_is"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/streakDialogNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/default_number"
+        android:textColor="@color/standard_color_on_black_screen"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/streakDialogTitleTxt"
+        app:layout_constraintStart_toStartOf="@+id/streakDialogTitleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/streakDialogTitleTxt" />
+
+    <TextView
+        android:id="@+id/streakDialogRetryTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginTop="30dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/retry"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/verticalLine_1"
+        app:layout_constraintEnd_toEndOf="@+id/streakDialogNumTxt"
+        app:layout_constraintStart_toStartOf="@+id/streakDialogNumTxt"
+        app:layout_constraintTop_toBottomOf="@+id/streakDialogNumTxt" />
+
+    <View
+        android:id="@+id/verticalLine_1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white_shaded_x4"
+        app:layout_constraintBottom_toTopOf="@id/streakDialogCancelTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/streakDialogRetryTxt"
+        app:layout_constraintWidth_percent="0.98" />
+
+    <TextView
+        android:id="@+id/streakDialogExitTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/exit"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/streakDialogCancelTxt"
+        app:layout_constraintStart_toStartOf="@+id/streakDialogCancelTxt"
+        app:layout_constraintTop_toBottomOf="@id/verticalLine_2" />
+
+    <View
+        android:id="@+id/verticalLine_2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white_shaded_x4"
+        app:layout_constraintBottom_toTopOf="@id/streakDialogExitTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/streakDialogCancelTxt"
+        app:layout_constraintWidth_percent="0.98" />
+
+    <TextView
+        android:id="@+id/streakDialogCancelTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/cancel"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/verticalLine_2"
+        app:layout_constraintEnd_toEndOf="@+id/streakDialogRetryTxt"
+        app:layout_constraintStart_toStartOf="@+id/streakDialogRetryTxt"
+        app:layout_constraintTop_toBottomOf="@id/verticalLine_1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

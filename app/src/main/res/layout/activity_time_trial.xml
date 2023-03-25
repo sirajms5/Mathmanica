@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:multi_line_radio_group="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/timeTrialLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimeTrialActivity">
+
+    <RelativeLayout
+        android:id="@+id/timeTrialRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/timeTrialFirstNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_number"
+            android:textColor="#ff7f00"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/timeTrialSecondNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/timeTrialOperationTxt"
+            android:text="@string/default_number"
+            android:textColor="#ff7f00"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/timeTrialOperationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/timeTrialFirstNumTxt"
+            android:text="@string/addition"
+            android:textColor="@color/yellow_caryola"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/timeTrialEqualSignTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/timeTrialSecondNumTxt"
+            android:text="@string/equal"
+            android:textColor="#ee00ffff"
+            android:textSize="50sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timeTrialQuestionMarkRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/timeTrialRelativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/timeTrialRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/timeTrialRelativeLayout">
+
+        <TextView
+            android:id="@+id/timeTrialQuestionMarkTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_mark"
+            android:textColor="@color/green"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/timeTrialQuestionMark_2Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/timeTrialQuestionMarkTxt"
+            android:text="@string/question_mark"
+            android:textColor="@color/red"
+            android:textSize="55sp" />
+    </RelativeLayout>
+
+    <com.whygraphics.multilineradiogroup.MultiLineRadioGroup
+        android:id="@+id/timeTrialChoicesRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTrialQuestionMarkRelativeLayout"
+        multi_line_radio_group:max_in_row="2">
+
+        <RadioButton
+            android:id="@+id/timeTrialFirstChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/first_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/timeTrialSecondChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/second_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/timeTrialThirdChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/third_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/timeTrialFourthChoiceRadioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/fourth_choice"
+            android:textColor="@color/white_shaded"
+            android:textSize="25sp" />
+
+    </com.whygraphics.multilineradiogroup.MultiLineRadioGroup>
+
+
+    <TextView
+        android:id="@+id/timeTrialScoreTitleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/knewave"
+        android:text="@string/time_remaining"
+        android:textColor="#DCF763"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTrialBtnsLayout" />
+
+    <TextView
+        android:id="@+id/timeTrialDifficultyModeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/time_trial_mode"
+        android:textColor="@color/yellow_caryola"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/timeTrialBtnsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:animateLayoutChanges="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTrialChoicesRadioGroup">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timeTrialNextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/timeTrialSubmitBtn"
+            android:enabled="false"
+            android:text="@string/next"
+            app:cornerRadius="30dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timeTrialStartBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            app:cornerRadius="30dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timeTrialSubmitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@id/timeTrialStartBtn"
+            android:enabled="false"
+            android:text="@string/submit"
+            app:cornerRadius="30dp" />
+
+        <!--        <com.google.android.material.button.MaterialButton-->
+        <!--            android:id="@+id/timeTrialRetryBtn"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:enabled="false"-->
+        <!--            android:text="@string/retry"-->
+        <!--            app:cornerRadius="30dp"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:layout_toEndOf="@id/timeTrialSubmitBtn"-->
+        <!--            android:layout_marginStart="25dp"/>-->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timerRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeTrialScoreTitleTxt">
+
+        <TextView
+            android:id="@+id/hoursTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/knewave"
+            android:text="@string/double_zero"
+            android:textColor="@color/yellow_shaded"
+            android:textSize="75sp" />
+
+        <TextView
+            android:id="@+id/secondsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/secondColon"
+            android:fontFamily="@font/knewave"
+            android:text="@string/double_zero"
+            android:textColor="@color/yellow_shaded"
+            android:textSize="75sp" />
+
+        <TextView
+            android:id="@+id/firstColon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/hoursTxt"
+            android:fontFamily="@font/knewave"
+            android:text="@string/colon"
+            android:textColor="@color/yellow_shaded"
+            android:textSize="75sp" />
+
+        <TextView
+            android:id="@+id/secondColon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/minutesTxt"
+            android:fontFamily="@font/knewave"
+            android:text="@string/colon"
+            android:textColor="@color/yellow_shaded"
+            android:textSize="75sp"
+            app:layout_constraintEnd_toStartOf="@+id/minutesTxt"
+            tools:layout_editor_absoluteY="492dp" />
+
+        <TextView
+            android:id="@+id/minutesTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/firstColon"
+            android:fontFamily="@font/knewave"
+            android:text="@string/zero_one"
+            android:textColor="@color/yellow_shaded"
+            android:textSize="75sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/timeTrialScoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/your_score_with_colon"
+        android:textColor="@color/yellow_caryola"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/timeTrialScoreNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/num0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timeTrialScoreTitle" />
+
+    <TextView
+        android:id="@+id/bonusTimeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_30s"
+        android:textColor="@color/green"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/timerRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/timeTrialScoreTitleTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

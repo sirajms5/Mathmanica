@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_bg">
+
+    <TextView
+        android:id="@+id/aboutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lemon"
+        android:text="@string/app_name"
+        android:textColor="@color/white_shaded"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/about_description"
+        android:textColor="@color/white_shaded"
+        app:layout_constraintEnd_toEndOf="@+id/aboutTitle"
+        app:layout_constraintStart_toStartOf="@+id/aboutTitle"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTitle"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <TextView
+        android:id="@+id/visitTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/visit"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/dismissTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/dismiss"
+        android:textAllCaps="true"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toStartOf="@+id/visitTxt"
+        app:layout_constraintTop_toTopOf="@+id/visitTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

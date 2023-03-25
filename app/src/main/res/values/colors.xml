@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bg_blue">#1D2671</color>
+    <color name="bg_red">#C33764</color>
+    <color name="orange_pantone">#F75C03</color>
+    <color name="green">#00FF00</color>
+    <color name="green_shaded">#ee00FF00</color>
+    <color name="yellow_caryola">#F7EE7F</color>
+    <color name="pink_lavender">#EFC3E6</color>
+    <color name="bg_blue_faded">#441D2671</color>
+    <color name="dark_grey">#333333</color>
+    <color name="white_shaded_x2">#bbffffff</color>
+    <color name="red">#ff0000</color>
+    <color name="white_shaded_x3">#44ffffff</color>
+    <!--    <color name="purple_shaded">#116200EE</color> DELETE BEFORE PUBLISH IF NOT USED OTHERWISE CHANGE NAME-->
+    <color name="addition_cyan_green">#009966</color>
+    <color name="subtraction_apple_red">#FF0800</color>
+    <color name="multiplication_lilac">#E2A0FF</color>
+    <color name="division_capri">#00BFFF</color>
+    <color name="numbers_orange">#ff7f00</color>
+    <color name="white_shaded">#eeffffff</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="semi_blue">#336AEC</color>
+
+    <!-- very easy scores colors -->
+    <color name="very_easy_score_1">#00FFFF</color>
+    <color name="very_easy_score_2">#00FFdd</color>
+    <color name="very_easy_score_3">#00FFcc</color>
+    <color name="very_easy_score_4">#00FFbb</color>
+    <color name="very_easy_score_5">#00FFaa</color>
+    <color name="very_easy_score_6">#00FF99</color>
+    <color name="very_easy_score_7">#00FF88</color>
+    <color name="very_easy_score_8">#00FF77</color>
+    <color name="very_easy_score_9">#00FF66</color>
+    <color name="very_easy_score_10">#00FF55</color>
+    <color name="very_easy_score_11">#00FF44</color>
+    <color name="very_easy_score_12">#00FF33</color>
+    <color name="very_easy_score_13">#00FF22</color>
+    <color name="very_easy_score_14">#ee00FF00</color>
+
+    <!-- easy scores colors -->
+    <color name="easy_score_1">#ee00FF00</color>
+    <color name="easy_score_2">#33FF00</color>
+    <color name="easy_score_3">#44FF00</color>
+    <color name="easy_score_4">#55FF00</color>
+    <color name="easy_score_5">#66FF00</color>
+    <color name="easy_score_6">#77FF00</color>
+    <color name="easy_score_7">#88FF00</color>
+    <color name="easy_score_8">#99FF00</color>
+    <color name="easy_score_9">#aaFF00</color>
+    <color name="easy_score_10">#bbFF00</color>
+    <color name="easy_score_11">#ccFF00</color>
+    <color name="easy_score_12">#ddFF00</color>
+    <color name="easy_score_13">#eeFF00</color>
+    <color name="easy_score_14">#ffFF00</color>
+
+    <!-- Medium scores colors -->
+    <color name="medium_score_1">#FFFF00</color>
+    <color name="medium_score_2">#FFdd00</color>
+    <color name="medium_score_3">#FFcc00</color>
+    <color name="medium_score_4">#FFbb00</color>
+    <color name="medium_score_5">#FFaa00</color>
+    <color name="medium_score_6">#FF9900</color>
+    <color name="medium_score_7">#FF8800</color>
+    <color name="medium_score_8">#FF7700</color>
+    <color name="medium_score_9">#FF6600</color>
+    <color name="medium_score_10">#FF5500</color>
+    <color name="medium_score_11">#FF4400</color>
+    <color name="medium_score_12">#FF3300</color>
+    <color name="medium_score_13">#FF2200</color>
+    <color name="medium_score_14">#FF0000</color>
+
+    <!-- Hard scores colors -->
+    <color name="hard_score_1">#FF0000</color>
+    <color name="hard_score_2">#FF2222</color>
+    <color name="hard_score_3">#FF3333</color>
+    <color name="hard_score_4">#FF4444</color>
+    <color name="hard_score_5">#FF5555</color>
+    <color name="hard_score_6">#FF6666</color>
+    <color name="hard_score_7">#FF7777</color>
+    <color name="hard_score_8">#FF8899</color>
+    <color name="hard_score_9">#FF88aa</color>
+    <color name="hard_score_10">#FF88bb</color>
+    <color name="hard_score_11">#FF88cc</color>
+    <color name="hard_score_12">#FF88dd</color>
+    <color name="hard_score_13">#FF88ee</color>
+    <color name="hard_score_14">#FF88ff</color>
+    <color name="purple_shaded">#623AA2</color>
+    <color name="blue_shaded">#4286f4</color>
+    <color name="yellow_shaded">#eeFFFF00</color>
+    <color name="white_shaded_x4">#22ffffff</color>
+    <color name="green_shaded_x3">#5500ff00</color>
+    <color name="yellow">#FFFF00</color>
+
+    <color name="aqua_shaded">#5500FFFF</color>
+    <color name="yellow_shaded_x2">#55FFFF00</color>
+    <color name="red_shaded">#55FF0000</color>
+    <color name="standard_color_on_black_screen">#536DFE</color>
+</resources>

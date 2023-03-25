@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
+        <item>@font/knewave</item>
+        <item>@font/lemon</item>
+        <item>@font/rammetto_one</item>
+        <item>@font/sonsie_one</item>
+        <item>@font/ultra</item>
+    </array>
+</resources>
