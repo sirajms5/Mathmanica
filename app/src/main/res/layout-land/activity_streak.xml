@@ -60,10 +60,10 @@
         android:id="@+id/streakQuestionMarkRelativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/streakRelativeLayout"
-        app:layout_constraintStart_toStartOf="@+id/streakRelativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/streakRelativeLayout">
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/streakRelativeLayout"
+        app:layout_constraintStart_toEndOf="@+id/streakRelativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/streakRelativeLayout">
 
         <TextView
             android:id="@+id/streakQuestionMarkTxt"
@@ -87,10 +87,9 @@
         android:id="@+id/streakChoicesRadioGroup"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/streakDifficultyModeTxt"
         app:layout_constraintStart_toStartOf="@id/streakRelativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/streakQuestionMarkRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/streakNumTxt"
         multi_line_radio_group:max_in_row="2">
 
         <RadioButton

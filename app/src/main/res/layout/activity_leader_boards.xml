@@ -390,9 +390,9 @@
         android:id="@+id/userRankNumTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="@string/unregistered_rank"
         android:textColor="@color/aqua"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/userScoreTitleTxt" />
 

@@ -60,10 +60,10 @@
         android:id="@+id/questionMarkRelativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout">
 
         <TextView
             android:id="@+id/questionMarkTxt"
@@ -87,10 +87,9 @@
         android:id="@+id/choicesRadioGroup"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/difficultyModeTxt"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/questionMarkRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt"
         multi_line_radio_group:max_in_row="2">
 
         <RadioButton
@@ -136,20 +135,18 @@
         android:id="@+id/scoreTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:fontFamily="@font/knewave"
         android:text="@string/your_score"
         android:textColor="#DCF763"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
 
     <TextView
         android:id="@+id/scoreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/knewave"
         android:text="@string/default_number_x2"
         android:textSize="75sp"
@@ -186,43 +183,42 @@
             app:cornerRadius="30dp" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/difficultyModeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/easy"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/scoreTxt"
         app:layout_constraintStart_toStartOf="@+id/scoreTxt"
-        app:layout_constraintTop_toTopOf="@+id/guideline13">
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
 
-        <TextView
-            android:id="@+id/difficultyModeTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/easy"
-            android:textSize="25sp" />
+    <TextView
+        android:id="@+id/levelNumTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/difficultyModeTxt"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/level"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/difficultyModeTxt"
+        app:layout_constraintStart_toStartOf="@+id/difficultyModeTxt"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyModeTxt" />
 
-        <TextView
-            android:id="@+id/levelNumTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/difficultyModeTxt"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/level"
-            android:textSize="23sp" />
-
-        <TextView
-            android:id="@+id/levelNumTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/difficultyModeTxt"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@id/levelNumTitle"
-            android:fontFamily="@font/aclonica"
-            android:text="@string/level_num"
-            android:textSize="25sp" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/levelNumTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/difficultyModeTxt"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/levelNumTitle"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/level_num"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/levelNumTitle"
+        app:layout_constraintTop_toTopOf="@+id/levelNumTitle" />
 
     <TextView
         android:id="@+id/quickGameBonusTxt"

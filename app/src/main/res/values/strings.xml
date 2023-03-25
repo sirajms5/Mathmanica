@@ -86,7 +86,7 @@
     <string name="allow">allow</string>
     <string name="dont_show_message">Don\'t show this dialog again</string>
     <string name="choose_game_mode">Choose Game Mode</string>
-    <string name="username">Username...</string>
+    <string name="username">Username…</string>
     <string name="skip">Skip</string>
     <string name="re_enter_password">Re-enter Password</string>
     <string name="password_doesnt_match">Password does not match.\nMake sure the passwords are the same.</string>
@@ -106,6 +106,6 @@
     <string name="multiplication">×</string>
     <string name="division">÷</string>
     <string name="subtraction">-</string>
-    <string name="deleted">" has been deleted!"</string>
+    <string name="deleted">&#160;has been deleted!</string>
     <string name="streak_with_space">Streak&#160;</string>
 </resources>

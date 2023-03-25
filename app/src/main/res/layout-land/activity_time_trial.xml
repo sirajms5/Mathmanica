@@ -60,10 +60,10 @@
         android:id="@+id/timeTrialQuestionMarkRelativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/timeTrialRelativeLayout"
-        app:layout_constraintStart_toStartOf="@+id/timeTrialRelativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/timeTrialRelativeLayout">
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTrialRelativeLayout"
+        app:layout_constraintStart_toEndOf="@+id/timeTrialRelativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/timeTrialRelativeLayout">
 
         <TextView
             android:id="@+id/timeTrialQuestionMarkTxt"
@@ -87,10 +87,9 @@
         android:id="@+id/timeTrialChoicesRadioGroup"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTrialDifficultyModeTxt"
         app:layout_constraintStart_toStartOf="@+id/timeTrialRelativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/timeTrialQuestionMarkRelativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/timeTrialScoreNumTxt"
         multi_line_radio_group:max_in_row="2">
 
         <RadioButton
@@ -149,15 +148,13 @@
         android:id="@+id/timeTrialDifficultyModeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/time_trial_mode"
         android:textColor="@color/yellow_caryola"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTrialBtnsLayout"
         app:layout_constraintEnd_toEndOf="@+id/timeTrialScoreTitle"
-        app:layout_constraintStart_toStartOf="@+id/timeTrialScoreTitle"
-        app:layout_constraintTop_toBottomOf="@+id/timeTrialScoreNumTxt" />
+        app:layout_constraintStart_toStartOf="@+id/timeTrialScoreTitle" />
 
     <RelativeLayout
         android:id="@+id/timeTrialBtnsLayout"
@@ -273,13 +270,12 @@
         android:id="@+id/timeTrialScoreTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/your_score"
         android:textAllCaps="true"
         android:textColor="@color/yellow_caryola"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/timeTrialBtnsLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/timeTrialQuestionMarkRelativeLayout"
         app:layout_constraintEnd_toEndOf="@+id/timerRelativeLayout"
         app:layout_constraintStart_toStartOf="@+id/timerRelativeLayout"
         app:layout_constraintTop_toBottomOf="@+id/timerRelativeLayout" />
@@ -288,13 +284,13 @@
         android:id="@+id/timeTrialScoreNumTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/aclonica"
         android:text="@string/num0"
         android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="@+id/timeTrialScoreTitle"
-        app:layout_constraintStart_toStartOf="@+id/timeTrialScoreTitle"
-        app:layout_constraintTop_toBottomOf="@+id/timeTrialScoreTitle" />
+        app:layout_constraintBottom_toTopOf="@+id/timeTrialDifficultyModeTxt"
+        app:layout_constraintEnd_toEndOf="@+id/timerRelativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/timerRelativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/timerRelativeLayout" />
 
     <TextView
         android:id="@+id/bonusTimeTxt"

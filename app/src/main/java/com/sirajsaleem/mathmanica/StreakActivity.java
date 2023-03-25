@@ -83,7 +83,7 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
         findViews();
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Streak " + LocalUserSettings.getInstance(this).getScore("Streak")); // string + int
+            getSupportActionBar().setTitle(getString(R.string.streak_with_space) + LocalUserSettings.getInstance(this).getScore("Streak")); // string + int
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -209,10 +209,12 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
 
                     retryTxt.setOnClickListener(j -> {
                         dialog.dismiss();
+                        updateScore(0);
                         streakNumString = "" + LocalUserSettings.getInstance(this).getScore(gameDifficulty);
                         streakNumTxt.setText(streakNumString);
                         nextEquation();
                         refreshRadioGroup();
+                        isSubmitted = false;
                     });
 
                     cancelTxt.setOnClickListener(j -> {
@@ -233,6 +235,7 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
             streakRetryBtn.setEnabled(false);
             nextEquation();
             refreshRadioGroup();
+            isSubmitted = false;
         });
 
         streakNextBtn.setOnClickListener(v -> {
