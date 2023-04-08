@@ -67,6 +67,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
     private final ArrayList<Integer> choices = new ArrayList<>();
     public static boolean isSubmitted;
     private ConstraintLayout quickGameLayout;
+    private final ScoreColors scoreColors = new ScoreColors();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1026,7 +1027,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
 
     private void getScore() {
         userScore = LocalUserSettings.getInstance(this).getScore(gameDifficulty);
-        scoreTxt.setTextColor(ContextCompat.getColor(this, ScoreColors.getInstance().getColor(gameDifficulty, userScore)));
+        scoreTxt.setTextColor(ContextCompat.getColor(this, scoreColors.getColor(gameDifficulty, userScore)));
         scoreString = Integer.toString(userScore);
         scoreTxt.setText(scoreString);
     }
@@ -1065,7 +1066,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             }
         }
         // score color control
-        scoreTxt.setTextColor(ContextCompat.getColor(this, ScoreColors.getInstance().getColor(gameDifficulty, userScore)));
+        scoreTxt.setTextColor(ContextCompat.getColor(this, scoreColors.getColor(gameDifficulty, userScore)));
         scoreString = Integer.toString(newScore);
         scoreTxt.setText(scoreString);
         LocalUserSettings.getInstance(this).setScore(gameDifficulty, newScore);

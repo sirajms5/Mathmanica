@@ -8,9 +8,8 @@ public class ScoreColors {
     private final ArrayList<Integer> mediumColors = new ArrayList<>();
     private final ArrayList<Integer> hardColors = new ArrayList<>();
     private final ArrayList<Integer> streakColors = new ArrayList<>();
-    private static ScoreColors instance; //todo: check it out
 
-    private ScoreColors() {
+    public ScoreColors() {
         veryEasyColors.add(R.color.very_easy_score_1);  //0
         veryEasyColors.add(R.color.very_easy_score_2);  //1
         veryEasyColors.add(R.color.very_easy_score_3);  //2
@@ -310,9 +309,5 @@ public class ScoreColors {
                     return hardColors.get(13);
                 }
         }
-    }
-
-    public static ScoreColors getInstance() {
-        return instance = new ScoreColors();
     }
 }

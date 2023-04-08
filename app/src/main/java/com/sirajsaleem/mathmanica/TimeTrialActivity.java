@@ -84,6 +84,7 @@ public class TimeTrialActivity extends AppCompatActivity implements MethodsFacto
     public static boolean isCounterSwitch;
     public static boolean isEndRun;
     private ConstraintLayout timeTrialLayout;
+    private final ScoreColors scoreColors = new ScoreColors();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -260,7 +261,7 @@ public class TimeTrialActivity extends AppCompatActivity implements MethodsFacto
     }
 
     private void updateScore(int num) {
-        timeTrialScoreTxt.setTextColor(ContextCompat.getColor(this, ScoreColors.getInstance().getColor(gameDifficulty, timeTrialScore)));
+        timeTrialScoreTxt.setTextColor(ContextCompat.getColor(this, scoreColors.getColor(gameDifficulty, timeTrialScore)));
         if (isStarted) {
             setColor();
         }
@@ -862,7 +863,7 @@ public class TimeTrialActivity extends AppCompatActivity implements MethodsFacto
         TextView streakDialogNumTxt = dialog.findViewById(R.id.streakDialogNumTxt);
 
         streakDialogNumTxt.setText(timeTrialNumString);
-        streakDialogNumTxt.setTextColor(ContextCompat.getColor(TimeTrialActivity.this, ScoreColors.getInstance().getColor(gameDifficulty, timeTrialScore)));
+        streakDialogNumTxt.setTextColor(ContextCompat.getColor(TimeTrialActivity.this, scoreColors.getColor(gameDifficulty, timeTrialScore)));
 
         retryTxt.setOnClickListener(j -> {
             dialog.dismiss();
@@ -923,7 +924,7 @@ public class TimeTrialActivity extends AppCompatActivity implements MethodsFacto
             TextView endRunDialogScoreTxt = dialog.findViewById(R.id.timeTrialEndRunDialogScoreTxt);
 
             endRunDialogScoreTxt.setText(timeTrialNumString);
-            endRunDialogScoreTxt.setTextColor(ContextCompat.getColor(TimeTrialActivity.this, ScoreColors.getInstance().getColor(gameDifficulty, timeTrialScore)));
+            endRunDialogScoreTxt.setTextColor(ContextCompat.getColor(TimeTrialActivity.this, scoreColors.getColor(gameDifficulty, timeTrialScore)));
 
             endRunDialogYesTxt.setOnClickListener(j -> {
                 dialog.dismiss();

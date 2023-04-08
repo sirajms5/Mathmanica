@@ -70,6 +70,7 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
     private final ArrayList<Integer> choices = new ArrayList<>();
     public static boolean isSubmitted;
     private ConstraintLayout streakLayout;
+    private final ScoreColors scoreColors = new ScoreColors();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,7 +206,7 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
                     streakDialogNumTxt = dialog.findViewById(R.id.streakDialogNumTxt);
 
                     streakDialogNumTxt.setText(streakNumString);
-                    streakDialogNumTxt.setTextColor(ContextCompat.getColor(this, ScoreColors.getInstance().getColor(gameDifficulty, streakNum)));
+                    streakDialogNumTxt.setTextColor(ContextCompat.getColor(this, scoreColors.getColor(gameDifficulty, streakNum)));
 
                     retryTxt.setOnClickListener(j -> {
                         dialog.dismiss();
@@ -273,7 +274,7 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
 
     private void updateScore(int num) {
         // score color control
-        streakNumTxt.setTextColor(ContextCompat.getColor(this, ScoreColors.getInstance().getColor(gameDifficulty, streakNum)));
+        streakNumTxt.setTextColor(ContextCompat.getColor(this, scoreColors.getColor(gameDifficulty, streakNum)));
         streakNumString = Integer.toString(num);
         streakNumTxt.setText(streakNumString);
         if (getSupportActionBar() != null) {
