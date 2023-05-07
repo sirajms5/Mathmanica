@@ -68,6 +68,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
     public static boolean isSubmitted;
     private ConstraintLayout quickGameLayout;
     private final ScoreColors scoreColors = new ScoreColors();
+    private final Equation equation = new Equation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +117,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                 bonusPoints = getString(R.string.add_20);
                 bonusPointsTxt.setTextColor(Color.YELLOW);
                 break;
-            default:
+            default: // Hard difficulty
                 difficultyModeTxt.setTextColor(Color.RED);
                 levelNumTxt.setTextColor(Color.RED);
                 levelNumTitleTxt.setTextColor(Color.RED);
@@ -338,19 +339,35 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         if (userScore < 125) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 10);
-            hardDivisionFixer(operation);
+            if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
+            firstNum = equation.getFirstNum();
+            secondNum = equation.getSecondNum();
         } else if (userScore < 250) {
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 10);
-            hardDivisionFixer(operation);
+            if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
+            firstNum = equation.getFirstNum();
+            secondNum = equation.getSecondNum();
         } else if (userScore < 500) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 100);
-            hardDivisionFixer(operation);
+            if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
+            firstNum = equation.getFirstNum();
+            secondNum = equation.getSecondNum();
         } else if (userScore < 875) {
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 100);
-            hardDivisionFixer(operation);
+            if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
+            firstNum = equation.getFirstNum();
+            secondNum = equation.getSecondNum();
         } else {
             if (operation.equals("+") || operation.equals("-")) {
                 firstNum = (int) (firstRandomNum * 10000);
@@ -360,12 +377,15 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                 if (multiOrDivide <= 5) {
                     firstNum = (int) (firstRandomNum * 10000);
                     secondNum = (int) (secondRandomNum * 100);
-                    hardDivisionFixer(operation);
                 } else {
                     firstNum = (int) (firstRandomNum * 1000);
                     secondNum = (int) (secondRandomNum * 1000);
-                    hardDivisionFixer(operation);
                 }
+                if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                    correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                }
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
         }
         if (firstNum >= 1000) {
@@ -385,7 +405,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             secondNumTxt.setText(secondNumString);
         }
 
-        getCorrectAnswer();
+        correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
         createHardChoices(userScore);
     }
 
@@ -512,108 +532,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         createChoices();
     }
 
-    private void hardDivisionFixer(String operation) {
 
-        if (operation.equals("÷")) {
-            if (firstNum > secondNum) {
-                while (secondNum == 0) {
-                    if (userScore < 250) {
-                        secondNum = (int) (Math.random() * 10);
-                    } else if (userScore < 875) {
-                        secondNum = (int) (Math.random() * 100);
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                        } else {
-                            secondNum = (int) (Math.random() * 1000);
-                        }
-                    }
-                }
-                while (firstNum % secondNum != 0) {
-                    if (userScore < 250) {
-                        secondNum = (int) (Math.random() * 10);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 10);
-                            }
-                        }
-                    } else if (userScore < 875) {
-                        secondNum = (int) (Math.random() * 100);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 100);
-                            }
-                        }
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            secondNum = (int) (Math.random() * 1000);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 1000);
-                                }
-                            }
-                        }
-                    }
-                }
-                correctAnswer = firstNum / secondNum;
-            } else {
-                while (firstNum == 0) {
-                    if (userScore < 250) {
-                        firstNum = (int) (Math.random() * 10);
-                    } else if (userScore < 875) {
-                        firstNum = (int) (Math.random() * 100);
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                        } else {
-                            firstNum = (int) (Math.random() * 1000);
-                        }
-                    }
-                }
-                while (secondNum % firstNum != 0) {
-                    if (userScore < 250) {
-                        firstNum = (int) (Math.random() * 10);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 10);
-                            }
-                        }
-                    } else if (userScore < 875) {
-                        firstNum = (int) (Math.random() * 100);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 100);
-                            }
-                        }
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            firstNum = (int) (Math.random() * 1000);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 1000);
-                                }
-                            }
-                        }
-                    }
-                }
-                correctAnswer = secondNum / firstNum;
-            }
-        }
-    }
 
     private void mediumEquationGenerator() {
         double firstRandomNum = Math.random();
@@ -663,11 +582,15 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         } else if (userScore < 500) {
             firstNum = (int) (firstRandomNum * 10);
             secondNum = (int) (secondRandomNum * 10);
-            mediumDivisionFixer(operation);
+            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
         } else if (userScore < 1000) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 10);
-            mediumDivisionFixer(operation);
+            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
         } else if (userScore < 1500) {
             multiOrDivide = Math.random() * 10;
             if (multiOrDivide <= 5) {
@@ -677,11 +600,15 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                 firstNum = (int) (firstRandomNum * 1000);
                 secondNum = (int) (secondRandomNum * 100);
             }
-            mediumDivisionFixer(operation);
+            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
         } else if (userScore < 1700) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 100);
-            mediumDivisionFixer(operation);
+            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+            }
         } else {
             if (operation.equals("+") || operation.equals("-")) {
                 firstNum = (int) (firstRandomNum * 1000);
@@ -691,11 +618,12 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                 if (multiOrDivide <= 5) {
                     firstNum = (int) (firstRandomNum * 100);
                     secondNum = (int) (secondRandomNum * 100);
-                    mediumDivisionFixer(operation);
                 } else {
                     firstNum = (int) (firstRandomNum * 1000);
                     secondNum = (int) (secondRandomNum * 10);
-                    mediumDivisionFixer(operation);
+                }
+                if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                    correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
                 }
             }
         }
@@ -716,7 +644,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             secondNumTxt.setText(secondNumString);
         }
 
-        getCorrectAnswer();
+        correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
         createMediumChoices(userScore);
     }
 
@@ -799,152 +727,6 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         createChoices();
     }
 
-    private void mediumDivisionFixer(String operation) {
-        if (operation.equals("÷")) {
-            if (firstNum > secondNum) {
-                while (secondNum == 0) {
-                    if (userScore < 1000) {
-                        secondNum = (int) (Math.random() * 10);
-                    } else if (userScore < 1500) {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                        } else {
-                            secondNum = (int) (Math.random() * 10);
-                        }
-                    } else if (userScore < 1700) {
-                        secondNum = (int) (Math.random() * 100);
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                        } else {
-                            secondNum = (int) (Math.random() * 10);
-                        }
-                    }
-                }
-                while (firstNum % secondNum != 0) {
-                    if (userScore < 1000) {
-                        secondNum = (int) (Math.random() * 10);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 10);
-                            }
-                        }
-                    } else if (userScore < 1500) {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            secondNum = (int) (Math.random() * 10);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 10);
-                                }
-                            }
-                        }
-                    } else if (userScore < 1700) {
-                        secondNum = (int) (Math.random() * 100);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 100);
-                            }
-                        }
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            secondNum = (int) (Math.random() * 10);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 10);
-                                }
-                            }
-                        }
-                    }
-                }
-                correctAnswer = firstNum / secondNum;
-            } else {
-                while (firstNum == 0) {
-                    if (userScore < 1000) {
-                        firstNum = (int) (Math.random() * 10);
-                    } else if (userScore < 1500) {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                        } else {
-                            firstNum = (int) (Math.random() * 10);
-                        }
-                    } else if (userScore < 1700) {
-                        firstNum = (int) (Math.random() * 100);
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                        } else {
-                            firstNum = (int) (Math.random() * 10);
-                        }
-                    }
-                }
-                while (secondNum % firstNum != 0) {
-                    if (userScore < 1000) {
-                        firstNum = (int) (Math.random() * 10);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 10);
-                            }
-                        }
-                    } else if (userScore < 1500) {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            firstNum = (int) (Math.random() * 10);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 10);
-                                }
-                            }
-                        }
-                    } else if (userScore < 1700) {
-                        firstNum = (int) (Math.random() * 100);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 100);
-                            }
-                        }
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            firstNum = (int) (Math.random() * 10);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 10);
-                                }
-                            }
-                        }
-                    }
-                }
-                correctAnswer = secondNum / firstNum;
-            }
-        }
-    }
-
     private void easyEquationGenerator() {
         double firstRandomNum = Math.random();
         double secondRandomNum = Math.random();
@@ -996,34 +778,10 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             secondNumTxt.setText(secondNumString);
         }
 
-        getCorrectAnswer();
+        correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
         createEasyChoices(userScore);
     }
 
-    private void getCorrectAnswer() {
-        switch (operation) {
-            case "+":
-                correctAnswer = firstNum + secondNum;
-                break;
-            case "-":
-                if (firstNum >= secondNum) {
-                    correctAnswer = firstNum - secondNum;
-                } else {
-                    correctAnswer = secondNum - firstNum;
-                }
-                break;
-            case "×":
-                correctAnswer = firstNum * secondNum;
-                break;
-            default: // case divide ÷
-                if (gameDifficulty.equals("Medium")) {
-                    mediumDivisionFixer(operation);
-                } else {
-                    hardDivisionFixer(operation);
-                }
-                break;
-        }
-    }
 
     private void getScore() {
         userScore = LocalUserSettings.getInstance(this).getScore(gameDifficulty);
@@ -1140,7 +898,7 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             firstNumTxt.setText(firstNumString);
             secondNumTxt.setText(secondNumString);
         }
-        getCorrectAnswer();
+        correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
         createVeryEasyChoices();
     }
 
