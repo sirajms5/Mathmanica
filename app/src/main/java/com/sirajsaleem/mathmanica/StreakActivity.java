@@ -61,13 +61,10 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
     private RadioButton fourthChoiceRadioButton;
     private static int correctAnswer;
     private int streakNum;
-    private int firstNum;
-    private int secondNum;
     private Button streakSubmitBtn;
     private Button streakNextBtn;
     private Button streakRetryBtn;
-    private double multiOrDivide;
-    private final ArrayList<Integer> choices = new ArrayList<>();
+    private ArrayList<Integer> choicesArray = new ArrayList<>();
     public static boolean isSubmitted;
     private ConstraintLayout streakLayout;
     private final ScoreColors scoreColors = new ScoreColors();
@@ -304,6 +301,8 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
     }
 
     private void nextEquation() {
+        Equation equation = new Equation();
+        Choices choices = new Choices();
         double firstRandomNum = Math.random();
         double secondRandomNum = Math.random();
         double operationRandomNum = Math.random() * 10;
@@ -342,6 +341,8 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
         operation = operationTxt.getText().toString();
 
         // numbers
+        int firstNum;
+        int secondNum;
         if (streakNum <= 2) {
             firstNum = (int) (firstRandomNum * 10);
             secondNum = (int) (secondRandomNum * 10);
@@ -351,47 +352,74 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
         } else if (streakNum <= 6) {
             firstNum = (int) (firstRandomNum * 10);
             secondNum = (int) (secondRandomNum * 10);
-            divisionFixer(operation);
+            if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
+            }
         } else if (streakNum <= 8) {
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 1000);
         } else if (streakNum <= 10) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 10);
-            divisionFixer(operation);
+            if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
+            }
         } else if (streakNum <= 12) {
             firstNum = (int) (firstRandomNum * 10000);
             secondNum = (int) (secondRandomNum * 10000);
         } else if (streakNum <= 14) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 100);
-            divisionFixer(operation);
+            if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
+            }
         } else if (streakNum <= 16) {
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 100);
-            divisionFixer(operation);
+            if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
+            }
         } else if (streakNum <= 18) {
             firstNum = (int) (firstRandomNum * 10000);
             secondNum = (int) (secondRandomNum * 100);
-            divisionFixer(operation);
+            if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
+            }
         } else if (streakNum <= 20) {
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 1000);
-            divisionFixer(operation);
+            if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
+            }
         } else {
             if (operation.equals("+") || operation.equals("-")) {
                 firstNum = (int) (firstRandomNum * 10000);
                 secondNum = (int) (secondRandomNum * 10000);
             } else {
-                multiOrDivide = Math.random() * 10;
+                double multiOrDivide = Math.random() * 10;
                 if (multiOrDivide <= 5) {
                     firstNum = (int) (firstRandomNum * 10000);
                     secondNum = (int) (secondRandomNum * 100);
-                    divisionFixer(operation);
                 } else {
                     firstNum = (int) (firstRandomNum * 1000);
                     secondNum = (int) (secondRandomNum * 1000);
-                    divisionFixer(operation);
+                }
+                if(equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum) != -1) {
+                    correctAnswer = equation.streakDivisionFixer(firstNum, operation, secondNum, streakNum);
+                    firstNum = equation.getFirstNum();
+                    secondNum = equation.getSecondNum();
                 }
             }
         }
@@ -413,397 +441,35 @@ public class StreakActivity extends AppCompatActivity implements MethodsFactory 
             secondNumTxt.setText(secondNumString);
         }
 
-        getCorrectAnswer();
+        correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, streakNum);
+        choicesArray = choices.createStreakChoices(correctAnswer, streakNum, operation);
         createChoices();
     }
 
     private void createChoices() {
-        choices.clear();
-        if (streakNum <= 2) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 10);
-                if (correctAnswer > 10) {
-                    choiceNum = choiceNum + 9;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 4) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 100);
-                if (correctAnswer > 100) {
-                    choiceNum = choiceNum + 99;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 10;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 6) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else {
-                    choiceNum = (int) (Math.random() * 100);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 8) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 1000);
-                if (correctAnswer > 1000) {
-                    choiceNum = choiceNum + 999;
-                } else if (correctAnswer < 100 && correctAnswer >= 10) {
-                    choiceNum = choiceNum / 10;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 100;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 10) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else {
-                    choiceNum = (int) (Math.random() * 1000);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 12) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                choiceNum = (int) (Math.random() * 10000);
-                if (correctAnswer > 10000) {
-                    choiceNum = choiceNum + 9999;
-                } else if (correctAnswer <= 1000 && correctAnswer > 100) {
-                    choiceNum = choiceNum / 10;
-                } else if (correctAnswer <= 100 && correctAnswer >= 10) {
-                    choiceNum = choiceNum / 100;
-                } else if (correctAnswer <= 10) {
-                    choiceNum = choiceNum / 1000;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 14) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else if (correctAnswer <= 500) {
-                    choiceNum = (int) (Math.random() * 500);
-                } else if (correctAnswer <= 1000) {
-                    choiceNum = (int) (Math.random() * 1000);
-                } else if (correctAnswer <= 2500) {
-                    choiceNum = (int) (Math.random() * 2500);
-                } else if (correctAnswer <= 5000) {
-                    choiceNum = (int) (Math.random() * 5000);
-                } else {
-                    choiceNum = (int) (Math.random() * 10000);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 16) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else if (correctAnswer <= 1000) {
-                    choiceNum = (int) (Math.random() * 1000);
-                } else if (correctAnswer <= 2500) {
-                    choiceNum = (int) (Math.random() * 2500);
-                } else if (correctAnswer <= 5000) {
-                    choiceNum = (int) (Math.random() * 5000);
-                } else if (correctAnswer <= 7500) {
-                    choiceNum = (int) (Math.random() * 7500);
-                } else if (correctAnswer <= 10000) {
-                    choiceNum = (int) (Math.random() * 10000);
-                } else if (correctAnswer <= 20000) {
-                    choiceNum = (int) (Math.random() * 20000);
-                } else if (correctAnswer <= 40000) {
-                    choiceNum = (int) (Math.random() * 40000);
-                } else if (correctAnswer <= 60000) {
-                    choiceNum = (int) (Math.random() * 60000);
-                } else if (correctAnswer <= 80000) {
-                    choiceNum = (int) (Math.random() * 80000);
-                } else {
-                    choiceNum = (int) (Math.random() * 100000);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (streakNum <= 20) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else if (correctAnswer <= 1000) {
-                    choiceNum = (int) (Math.random() * 1000);
-                } else if (correctAnswer <= 2500) {
-                    choiceNum = (int) (Math.random() * 2500);
-                } else if (correctAnswer <= 5000) {
-                    choiceNum = (int) (Math.random() * 5000);
-                } else if (correctAnswer <= 7500) {
-                    choiceNum = (int) (Math.random() * 7500);
-                } else if (correctAnswer <= 10000) {
-                    choiceNum = (int) (Math.random() * 10000);
-                } else if (correctAnswer <= 20000) {
-                    choiceNum = (int) (Math.random() * 20000);
-                } else if (correctAnswer <= 40000) {
-                    choiceNum = (int) (Math.random() * 40000);
-                } else if (correctAnswer <= 60000) {
-                    choiceNum = (int) (Math.random() * 60000);
-                } else if (correctAnswer <= 80000) {
-                    choiceNum = (int) (Math.random() * 80000);
-                } else if (correctAnswer <= 100000) {
-                    choiceNum = (int) (Math.random() * 100000);
-                } else if (correctAnswer <= 250000) {
-                    choiceNum = (int) (Math.random() * 250000);
-                } else if (correctAnswer <= 500000) {
-                    choiceNum = (int) (Math.random() * 500000);
-                } else {
-                    choiceNum = (int) (Math.random() * 1000000);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (operation.equals("+") || operation.equals("-")) {
-                    choiceNum = (int) (Math.random() * 10000);
-                    if (correctAnswer > 10000) {
-                        choiceNum = choiceNum + 9999;
-                    } else if (correctAnswer <= 1000 && correctAnswer > 100) {
-                        choiceNum = choiceNum / 10;
-                    } else if (correctAnswer <= 100 && correctAnswer >= 10) {
-                        choiceNum = choiceNum / 100;
-                    } else if (correctAnswer <= 10) {
-                        choiceNum = choiceNum / 1000;
-                    }
-                } else {
-                    if (correctAnswer <= 10) {
-                        choiceNum = (int) (Math.random() * 10);
-                    } else if (correctAnswer <= 100) {
-                        choiceNum = (int) (Math.random() * 100);
-                    } else if (correctAnswer <= 1000) {
-                        choiceNum = (int) (Math.random() * 1000);
-                    } else if (correctAnswer <= 2500) {
-                        choiceNum = (int) (Math.random() * 2500);
-                    } else if (correctAnswer <= 5000) {
-                        choiceNum = (int) (Math.random() * 5000);
-                    } else if (correctAnswer <= 7500) {
-                        choiceNum = (int) (Math.random() * 7500);
-                    } else if (correctAnswer <= 10000) {
-                        choiceNum = (int) (Math.random() * 10000);
-                    } else if (correctAnswer <= 20000) {
-                        choiceNum = (int) (Math.random() * 20000);
-                    } else if (correctAnswer <= 40000) {
-                        choiceNum = (int) (Math.random() * 40000);
-                    } else if (correctAnswer <= 60000) {
-                        choiceNum = (int) (Math.random() * 60000);
-                    } else if (correctAnswer <= 80000) {
-                        choiceNum = (int) (Math.random() * 80000);
-                    } else if (correctAnswer <= 100000) {
-                        choiceNum = (int) (Math.random() * 100000);
-                    } else if (correctAnswer <= 250000) {
-                        choiceNum = (int) (Math.random() * 250000);
-                    } else if (correctAnswer <= 500000) {
-                        choiceNum = (int) (Math.random() * 500000);
-                    } else {
-                        choiceNum = (int) (Math.random() * 1000000);
-                    }
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        }
         // creating choices UI
-        choices.add(correctAnswer);
-        Collections.sort(choices);
+        choicesArray.add(correctAnswer);
+        Collections.sort(choicesArray);
         ArrayList<String> formattedNumbers = new ArrayList<>();
         if (correctAnswer >= 1000) {
             for (int i = 0; i < 4; i++) {
                 NumberFormat nf = NumberFormat.getInstance();
-                formattedNumbers.add(nf.format(choices.get(i)));
+                formattedNumbers.add(nf.format(choicesArray.get(i)));
             }
             firstChoice = formattedNumbers.get(0);
             secondChoice = formattedNumbers.get(1);
             thirdChoice = formattedNumbers.get(2);
             fourthChoice = formattedNumbers.get(3);
         } else {
-            firstChoice = Integer.toString(choices.get(0));
-            secondChoice = Integer.toString(choices.get(1));
-            thirdChoice = Integer.toString(choices.get(2));
-            fourthChoice = Integer.toString(choices.get(3));
+            firstChoice = Integer.toString(choicesArray.get(0));
+            secondChoice = Integer.toString(choicesArray.get(1));
+            thirdChoice = Integer.toString(choicesArray.get(2));
+            fourthChoice = Integer.toString(choicesArray.get(3));
         }
         firstChoiceRadioButton.setText(firstChoice);
         secondChoiceRadioButton.setText(secondChoice);
         thirdChoiceRadioButton.setText(thirdChoice);
         fourthChoiceRadioButton.setText(fourthChoice);
-    }
-
-    private void getCorrectAnswer() {
-        switch (operation) {
-            case "+":
-                correctAnswer = firstNum + secondNum;
-                break;
-            case "-":
-                if (firstNum >= secondNum) {
-                    correctAnswer = firstNum - secondNum;
-                } else {
-                    correctAnswer = secondNum - firstNum;
-                }
-                break;
-            case "×":
-                correctAnswer = firstNum * secondNum;
-                break;
-            default: // case divide ÷
-                divisionFixer(operation);
-                break;
-        }
-    }
-
-    private void divisionFixer(String operation) {
-        if (operation.equals("÷")) {
-            if (firstNum > secondNum) {
-                while (secondNum == 0) {
-                    if (streakNum <= 10) {
-                        secondNum = (int) (Math.random() * 10);
-                    } else if (streakNum <= 18) {
-                        secondNum = (int) (Math.random() * 100);
-                    } else if (streakNum <= 20) {
-                        secondNum = (int) (Math.random() * 1000);
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                        } else {
-                            secondNum = (int) (Math.random() * 1000);
-                        }
-                    }
-                }
-                while (firstNum % secondNum != 0) {
-                    if (streakNum <= 10) {
-                        secondNum = (int) (Math.random() * 10);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 10);
-                            }
-                        }
-                    } else if (streakNum <= 18) {
-                        secondNum = (int) (Math.random() * 100);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 100);
-                            }
-                        }
-                    } else if (streakNum <= 20) {
-                        secondNum = (int) (Math.random() * 1000);
-                        if (secondNum == 0) {
-                            while (secondNum == 0) {
-                                secondNum = (int) (Math.random() * 1000);
-                            }
-                        }
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            secondNum = (int) (Math.random() * 100);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            secondNum = (int) (Math.random() * 1000);
-                            if (secondNum == 0) {
-                                while (secondNum == 0) {
-                                    secondNum = (int) (Math.random() * 1000);
-                                }
-                            }
-                        }
-                    }
-                }
-                correctAnswer = firstNum / secondNum;
-            } else {
-                while (firstNum == 0) {
-                    if (streakNum <= 10) {
-                        firstNum = (int) (Math.random() * 10);
-                    } else if (streakNum <= 18) {
-                        firstNum = (int) (Math.random() * 100);
-                    } else if (streakNum <= 20) {
-                        firstNum = (int) (Math.random() * 1000);
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                        } else {
-                            firstNum = (int) (Math.random() * 1000);
-                        }
-                    }
-                }
-                while (secondNum % firstNum != 0) {
-                    if (streakNum <= 10) {
-                        firstNum = (int) (Math.random() * 10);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 10);
-                            }
-                        }
-                    } else if (streakNum <= 18) {
-                        firstNum = (int) (Math.random() * 100);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 100);
-                            }
-                        }
-                    } else if (streakNum <= 20) {
-                        firstNum = (int) (Math.random() * 1000);
-                        if (firstNum == 0) {
-                            while (firstNum == 0) {
-                                firstNum = (int) (Math.random() * 1000);
-                            }
-                        }
-                    } else {
-                        if (multiOrDivide <= 5) {
-                            firstNum = (int) (Math.random() * 100);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 100);
-                                }
-                            }
-                        } else {
-                            firstNum = (int) (Math.random() * 1000);
-                            if (firstNum == 0) {
-                                while (firstNum == 0) {
-                                    firstNum = (int) (Math.random() * 1000);
-                                }
-                            }
-                        }
-                    }
-                }
-                correctAnswer = secondNum / firstNum;
-            }
-        }
     }
 
     @Override

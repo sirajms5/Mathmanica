@@ -161,6 +161,7 @@ public class LocalUserSettings {
             case "Time_Trial":
                 editor.remove(TIME_TRIAL_SCORE_KEY);
                 editor.putInt(TIME_TRIAL_SCORE_KEY, newScore);
+                break;
             default:
                 editor.remove(HARD_MODE_SCORE_KEY);
                 editor.putInt(HARD_MODE_SCORE_KEY, newScore);

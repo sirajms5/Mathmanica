@@ -64,11 +64,10 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
     private Button submitBtn;
     private Button nextBtn;
     private double multiOrDivide;
-    private final ArrayList<Integer> choices = new ArrayList<>();
+    private ArrayList<Integer> choicesArray = new ArrayList<>();
     public static boolean isSubmitted;
     private ConstraintLayout quickGameLayout;
     private final ScoreColors scoreColors = new ScoreColors();
-    private final Equation equation = new Equation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,7 +213,6 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                     }
                 }
 
-
                 if (correctAnswerString.equals(chosenRadioBtn)) {
                     levelNum = LocalUserSettings.getInstance(this).getCurrentLevel(gameDifficulty) + 1;
                     LocalUserSettings.getInstance(this).setCurrentLevel(gameDifficulty, levelNum);
@@ -306,6 +304,8 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
     }
 
     private void HardEquationGenerator() {
+        Equation equation = new Equation();
+        Choices choices = new Choices();
         double firstRandomNum = Math.random();
         double secondRandomNum = Math.random();
         double operationRandomNum = Math.random() * 10;
@@ -340,23 +340,23 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 10);
             if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
-                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                correctAnswer = equation.hardDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
-            firstNum = equation.getFirstNum();
-            secondNum = equation.getSecondNum();
         } else if (userScore < 250) {
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 10);
             if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
-                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                correctAnswer = equation.hardDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
-            firstNum = equation.getFirstNum();
-            secondNum = equation.getSecondNum();
         } else if (userScore < 500) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 100);
             if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
-                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                correctAnswer = equation.hardDivisionFixer(firstNum, operation, secondNum, userScore);
             }
             firstNum = equation.getFirstNum();
             secondNum = equation.getSecondNum();
@@ -364,10 +364,10 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             firstNum = (int) (firstRandomNum * 1000);
             secondNum = (int) (secondRandomNum * 100);
             if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
-                correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                correctAnswer = equation.hardDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
-            firstNum = equation.getFirstNum();
-            secondNum = equation.getSecondNum();
         } else {
             if (operation.equals("+") || operation.equals("-")) {
                 firstNum = (int) (firstRandomNum * 10000);
@@ -382,10 +382,10 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                     secondNum = (int) (secondRandomNum * 1000);
                 }
                 if(equation.hardDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
-                    correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                    correctAnswer = equation.hardDivisionFixer(firstNum, operation, secondNum, userScore);
+                    firstNum = equation.getFirstNum();
+                    secondNum = equation.getSecondNum();
                 }
-                firstNum = equation.getFirstNum();
-                secondNum = equation.getSecondNum();
             }
         }
         if (firstNum >= 1000) {
@@ -406,135 +406,13 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         }
 
         correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
-        createHardChoices(userScore);
-    }
-
-    private void createHardChoices(int userScore) {
-        choices.clear();
-        if (userScore < 125) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else if (correctAnswer < 400) {
-                    choiceNum = (int) (Math.random() * 400);
-                } else {
-                    choiceNum = (int) (Math.random() * 900);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 500) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else if (correctAnswer <= 500) {
-                    choiceNum = (int) (Math.random() * 500);
-                } else if (correctAnswer <= 1000) {
-                    choiceNum = (int) (Math.random() * 1000);
-                } else if (correctAnswer <= 2500) {
-                    choiceNum = (int) (Math.random() * 2500);
-                } else if (correctAnswer <= 5000) {
-                    choiceNum = (int) (Math.random() * 5000);
-                } else {
-                    choiceNum = (int) (Math.random() * 10000);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 875) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else if (correctAnswer <= 1000) {
-                    choiceNum = (int) (Math.random() * 1000);
-                } else if (correctAnswer <= 2500) {
-                    choiceNum = (int) (Math.random() * 2500);
-                } else if (correctAnswer <= 5000) {
-                    choiceNum = (int) (Math.random() * 5000);
-                } else if (correctAnswer <= 7500) {
-                    choiceNum = (int) (Math.random() * 7500);
-                } else if (correctAnswer <= 10000) {
-                    choiceNum = (int) (Math.random() * 10000);
-                } else if (correctAnswer <= 20000) {
-                    choiceNum = (int) (Math.random() * 20000);
-                } else if (correctAnswer <= 40000) {
-                    choiceNum = (int) (Math.random() * 40000);
-                } else if (correctAnswer <= 60000) {
-                    choiceNum = (int) (Math.random() * 60000);
-                } else if (correctAnswer <= 80000) {
-                    choiceNum = (int) (Math.random() * 80000);
-                } else {
-                    choiceNum = (int) (Math.random() * 100000);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (operation.equals("+") || operation.equals("-")) {
-                    choiceNum = (int) (Math.random() * 10000);
-                    if (correctAnswer > 10000) {
-                        choiceNum = choiceNum + 9999;
-                    } else if (correctAnswer <= 1000) {
-                        choiceNum = choiceNum / 10;
-                    }
-                } else {
-                    if (correctAnswer <= 10) {
-                        choiceNum = (int) (Math.random() * 10);
-                    } else if (correctAnswer <= 100) {
-                        choiceNum = (int) (Math.random() * 100);
-                    } else if (correctAnswer <= 1000) {
-                        choiceNum = (int) (Math.random() * 1000);
-                    } else if (correctAnswer <= 2500) {
-                        choiceNum = (int) (Math.random() * 2500);
-                    } else if (correctAnswer <= 5000) {
-                        choiceNum = (int) (Math.random() * 5000);
-                    } else if (correctAnswer <= 7500) {
-                        choiceNum = (int) (Math.random() * 7500);
-                    } else if (correctAnswer <= 10000) {
-                        choiceNum = (int) (Math.random() * 10000);
-                    } else if (correctAnswer <= 20000) {
-                        choiceNum = (int) (Math.random() * 20000);
-                    } else if (correctAnswer <= 40000) {
-                        choiceNum = (int) (Math.random() * 40000);
-                    } else if (correctAnswer <= 60000) {
-                        choiceNum = (int) (Math.random() * 60000);
-                    } else if (correctAnswer <= 80000) {
-                        choiceNum = (int) (Math.random() * 80000);
-                    } else if (correctAnswer <= 100000) {
-                        choiceNum = (int) (Math.random() * 100000);
-                    } else if (correctAnswer <= 250000) {
-                        choiceNum = (int) (Math.random() * 250000);
-                    } else if (correctAnswer <= 500000) {
-                        choiceNum = (int) (Math.random() * 500000);
-                    } else {
-                        choiceNum = (int) (Math.random() * 1000000);
-                    }
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        }
+        choicesArray = choices.createHardChoices(correctAnswer, userScore, operation);
         createChoices();
     }
 
-
-
     private void mediumEquationGenerator() {
+        Equation equation = new Equation();
+        Choices choices = new Choices();
         double firstRandomNum = Math.random();
         double secondRandomNum = Math.random();
         double operationRandomNum = Math.random() * 10;
@@ -582,14 +460,18 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         } else if (userScore < 500) {
             firstNum = (int) (firstRandomNum * 10);
             secondNum = (int) (secondRandomNum * 10);
-            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+            if (equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
                 correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
         } else if (userScore < 1000) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 10);
-            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+            if (equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
                 correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
         } else if (userScore < 1500) {
             multiOrDivide = Math.random() * 10;
@@ -600,14 +482,18 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                 firstNum = (int) (firstRandomNum * 1000);
                 secondNum = (int) (secondRandomNum * 100);
             }
-            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+            if (equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
                 correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
         } else if (userScore < 1700) {
             firstNum = (int) (firstRandomNum * 100);
             secondNum = (int) (secondRandomNum * 100);
-            if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+            if (equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
                 correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                firstNum = equation.getFirstNum();
+                secondNum = equation.getSecondNum();
             }
         } else {
             if (operation.equals("+") || operation.equals("-")) {
@@ -622,8 +508,10 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
                     firstNum = (int) (firstRandomNum * 1000);
                     secondNum = (int) (secondRandomNum * 10);
                 }
-                if(equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
+                if (equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore) != -1) {
                     correctAnswer = equation.mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                    firstNum = equation.getFirstNum();
+                    secondNum = equation.getSecondNum();
                 }
             }
         }
@@ -645,89 +533,13 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         }
 
         correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
-        createMediumChoices(userScore);
-    }
-
-    private void createMediumChoices(int userScore) {
-        choices.clear();
-        if (userScore < 100) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 100);
-                if (correctAnswer > 100) {
-                    choiceNum = choiceNum + 99;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 10;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 200) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 1000);
-                if (correctAnswer > 1000) {
-                    choiceNum = choiceNum + 999;
-                } else if (correctAnswer < 100 && correctAnswer >= 10) {
-                    choiceNum = choiceNum / 10;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 100;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 500) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 10) {
-                    choiceNum = (int) (Math.random() * 10);
-                } else {
-                    choiceNum = (int) (Math.random() * 100);
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 1000) {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (correctAnswer <= 100) {
-                    choiceNum = (int) (Math.random() * 100);
-                } else {
-                    choiceNum = (int) (Math.random() * 1000); //can improve difficulty by adding *500 and *1000
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else {
-            while (choices.size() < 3) {
-                int choiceNum;
-                if (operation.equals("+") || operation.equals("-")) {
-                    choiceNum = (int) (Math.random() * 1000);
-                    if (correctAnswer > 1000) {
-                        choiceNum = choiceNum + 999;
-                    } else if (correctAnswer < 100 && correctAnswer >= 10) {
-                        choiceNum = choiceNum / 10;
-                    } else if (correctAnswer < 10) {
-                        choiceNum = choiceNum / 100;
-                    }
-                } else {
-                    if (correctAnswer <= 1000) {
-                        choiceNum = (int) (Math.random() * 1000);
-                    } else {
-                        choiceNum = (int) (Math.random() * 10000); //can improve difficulty by adding *500 and *1000
-                    }
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        }
+        choicesArray = choices.createMediumChoices(correctAnswer, userScore, operation);
         createChoices();
     }
 
     private void easyEquationGenerator() {
+        Equation equation = new Equation();
+        Choices choices = new Choices();
         double firstRandomNum = Math.random();
         double secondRandomNum = Math.random();
         double operationRandomNum = Math.random() * 10;
@@ -779,7 +591,8 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
         }
 
         correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
-        createEasyChoices(userScore);
+        choicesArray = choices.createEasyChoices(correctAnswer, userScore);
+        createChoices();
     }
 
 
@@ -873,6 +686,8 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
     }
 
     private void veryEasyEquationGenerator() {
+        Equation equation = new Equation();
+        Choices choices = new Choices();
         double firstRandomNum = Math.random();
         double secondRandomNum = Math.random();
         double operationRandomNum = Math.random() * 10;
@@ -899,108 +714,28 @@ public class QuickGameActivity extends AppCompatActivity implements MethodsFacto
             secondNumTxt.setText(secondNumString);
         }
         correctAnswer = equation.getAnswer(firstNum, operation, secondNum, gameDifficulty, userScore);
-        createVeryEasyChoices();
-    }
-
-    private void createVeryEasyChoices() {
-        //creating choices
-        choices.clear();
-        while (choices.size() < 3) {
-            int choiceNum = (int) (Math.random() * 10);
-            if (correctAnswer > 10) {
-                choiceNum = choiceNum + 9;
-            }
-            if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                choices.add(choiceNum);
-            }
-        }
-        createChoices();
-    }
-
-    private void createEasyChoices(int userScore) {
-        choices.clear();
-        if (userScore < 150) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 10);
-                if (correctAnswer > 10) {
-                    choiceNum = choiceNum + 9;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 375) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 20);
-                if (correctAnswer > 20) {
-                    choiceNum = choiceNum + 19;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 2;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 750) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 50);
-                if (correctAnswer > 50) {
-                    choiceNum = choiceNum + 49;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 5;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else if (userScore < 1125) {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 100);
-                if (correctAnswer > 100) {
-                    choiceNum = choiceNum + 99;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 10;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        } else {
-            while (choices.size() < 3) {
-                int choiceNum = (int) (Math.random() * 1000);
-                if (correctAnswer > 1000) {
-                    choiceNum = choiceNum + 999;
-                } else if (correctAnswer < 100 && correctAnswer >= 10) {
-                    choiceNum = choiceNum / 10;
-                } else if (correctAnswer < 10) {
-                    choiceNum = choiceNum / 100;
-                }
-                if (choiceNum != correctAnswer && !choices.contains(choiceNum)) {
-                    choices.add(choiceNum);
-                }
-            }
-        }
+        choicesArray = choices.createVeryEasyChoices(correctAnswer);
         createChoices();
     }
 
     private void createChoices() {
-        choices.add(correctAnswer);
-        Collections.sort(choices);
+        choicesArray.add(correctAnswer);
+        Collections.sort(choicesArray);
         ArrayList<String> formattedNumbers = new ArrayList<>();
         if (correctAnswer >= 1000) {
             for (int i = 0; i < 4; i++) {
                 NumberFormat nf = NumberFormat.getInstance();
-                formattedNumbers.add(nf.format(choices.get(i)));
+                formattedNumbers.add(nf.format(choicesArray.get(i)));
             }
             firstChoice = formattedNumbers.get(0);
             secondChoice = formattedNumbers.get(1);
             thirdChoice = formattedNumbers.get(2);
             fourthChoice = formattedNumbers.get(3);
         } else {
-            firstChoice = Integer.toString(choices.get(0));
-            secondChoice = Integer.toString(choices.get(1));
-            thirdChoice = Integer.toString(choices.get(2));
-            fourthChoice = Integer.toString(choices.get(3));
+            firstChoice = Integer.toString(choicesArray.get(0));
+            secondChoice = Integer.toString(choicesArray.get(1));
+            thirdChoice = Integer.toString(choicesArray.get(2));
+            fourthChoice = Integer.toString(choicesArray.get(3));
         }
         firstChoiceRadioButton.setText(firstChoice);
         secondChoiceRadioButton.setText(secondChoice);

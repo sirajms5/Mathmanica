@@ -40,8 +40,10 @@ public class Equation {
             default: // case divide ÷
                 if (gameDifficulty.equals("Medium")) {
                     correctAnswer = mediumDivisionFixer(firstNum, operation, secondNum, userScore);
-                } else {
+                } else if(gameDifficulty.equals("Hard")) {
                     correctAnswer = hardDivisionFixer(firstNum, operation, secondNum, userScore);
+                } else { // streak
+                    correctAnswer = streakDivisionFixer(firstNum, operation, secondNum, userScore);
                 }
                 break;
         }
@@ -280,6 +282,133 @@ public class Equation {
                         if (firstNum == 0) {
                             while (firstNum == 0) {
                                 firstNum = (int) (Math.random() * 100);
+                            }
+                        }
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            firstNum = (int) (Math.random() * 100);
+                            if (firstNum == 0) {
+                                while (firstNum == 0) {
+                                    firstNum = (int) (Math.random() * 100);
+                                }
+                            }
+                        } else {
+                            firstNum = (int) (Math.random() * 1000);
+                            if (firstNum == 0) {
+                                while (firstNum == 0) {
+                                    firstNum = (int) (Math.random() * 1000);
+                                }
+                            }
+                        }
+                    }
+                }
+                correctAnswer = secondNum / firstNum;
+                setFirstNum(firstNum);
+                setSecondNum(secondNum);
+            }
+        }
+        return correctAnswer;
+    }
+
+    public int streakDivisionFixer(int firstNum, String operation, int secondNum, int streakNum){
+        int correctAnswer = -1;
+        double multiOrDivide = Math.random() * 10;
+        if (operation.equals("÷")) {
+            if (firstNum > secondNum) {
+                while (secondNum == 0) {
+                    if (streakNum <= 10) {
+                        secondNum = (int) (Math.random() * 10);
+                    } else if (streakNum <= 18) {
+                        secondNum = (int) (Math.random() * 100);
+                    } else if (streakNum <= 20) {
+                        secondNum = (int) (Math.random() * 1000);
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            secondNum = (int) (Math.random() * 100);
+                        } else {
+                            secondNum = (int) (Math.random() * 1000);
+                        }
+                    }
+                }
+                while (firstNum % secondNum != 0) {
+                    if (streakNum <= 10) {
+                        secondNum = (int) (Math.random() * 10);
+                        if (secondNum == 0) {
+                            while (secondNum == 0) {
+                                secondNum = (int) (Math.random() * 10);
+                            }
+                        }
+                    } else if (streakNum <= 18) {
+                        secondNum = (int) (Math.random() * 100);
+                        if (secondNum == 0) {
+                            while (secondNum == 0) {
+                                secondNum = (int) (Math.random() * 100);
+                            }
+                        }
+                    } else if (streakNum <= 20) {
+                        secondNum = (int) (Math.random() * 1000);
+                        if (secondNum == 0) {
+                            while (secondNum == 0) {
+                                secondNum = (int) (Math.random() * 1000);
+                            }
+                        }
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            secondNum = (int) (Math.random() * 100);
+                            if (secondNum == 0) {
+                                while (secondNum == 0) {
+                                    secondNum = (int) (Math.random() * 100);
+                                }
+                            }
+                        } else {
+                            secondNum = (int) (Math.random() * 1000);
+                            if (secondNum == 0) {
+                                while (secondNum == 0) {
+                                    secondNum = (int) (Math.random() * 1000);
+                                }
+                            }
+                        }
+                    }
+                }
+                correctAnswer = firstNum / secondNum;
+                setFirstNum(firstNum);
+                setSecondNum(secondNum);
+            } else {
+                while (firstNum == 0) {
+                    if (streakNum <= 10) {
+                        firstNum = (int) (Math.random() * 10);
+                    } else if (streakNum <= 18) {
+                        firstNum = (int) (Math.random() * 100);
+                    } else if (streakNum <= 20) {
+                        firstNum = (int) (Math.random() * 1000);
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            firstNum = (int) (Math.random() * 100);
+                        } else {
+                            firstNum = (int) (Math.random() * 1000);
+                        }
+                    }
+                }
+                while (secondNum % firstNum != 0) {
+                    if (streakNum <= 10) {
+                        firstNum = (int) (Math.random() * 10);
+                        if (firstNum == 0) {
+                            while (firstNum == 0) {
+                                firstNum = (int) (Math.random() * 10);
+                            }
+                        }
+                    } else if (streakNum <= 18) {
+                        firstNum = (int) (Math.random() * 100);
+                        if (firstNum == 0) {
+                            while (firstNum == 0) {
+                                firstNum = (int) (Math.random() * 100);
+                            }
+                        }
+                    } else if (streakNum <= 20) {
+                        firstNum = (int) (Math.random() * 1000);
+                        if (firstNum == 0) {
+                            while (firstNum == 0) {
+                                firstNum = (int) (Math.random() * 1000);
                             }
                         }
                     } else {
