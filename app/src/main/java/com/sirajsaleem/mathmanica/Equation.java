@@ -38,12 +38,19 @@ public class Equation {
                 correctAnswer = firstNum * secondNum;
                 break;
             default: // case divide ÷
-                if (gameDifficulty.equals("Medium")) {
-                    correctAnswer = mediumDivisionFixer(firstNum, operation, secondNum, userScore);
-                } else if(gameDifficulty.equals("Hard")) {
-                    correctAnswer = hardDivisionFixer(firstNum, operation, secondNum, userScore);
-                } else { // streak
-                    correctAnswer = streakDivisionFixer(firstNum, operation, secondNum, userScore);
+                switch (gameDifficulty) {
+                    case "Medium":
+                        correctAnswer = mediumDivisionFixer(firstNum, operation, secondNum, userScore);
+                        break;
+                    case "Hard":
+                        correctAnswer = hardDivisionFixer(firstNum, operation, secondNum, userScore);
+                        break;
+                    case "Streak":
+                        correctAnswer = streakDivisionFixer(firstNum, operation, secondNum, userScore);
+                        break;
+                    default:  // time trial
+                        correctAnswer = timeTrialDivisionFixer(firstNum, operation, secondNum, userScore);
+                        break;
                 }
                 break;
         }
@@ -432,6 +439,129 @@ public class Equation {
                 correctAnswer = secondNum / firstNum;
                 setFirstNum(firstNum);
                 setSecondNum(secondNum);
+            }
+        }
+        return correctAnswer;
+    }
+
+    public int timeTrialDivisionFixer(int firstNum, String operation, int secondNum, int timeTrialScore) {
+        int correctAnswer = -1;
+        double multiOrDivide = Math.random() * 10;
+        if (operation.equals("÷")) {
+            if (firstNum > secondNum) {
+                while (secondNum == 0) {
+                    if (timeTrialScore <= 200) {
+                        secondNum = (int) (Math.random() * 10);
+                    } else if (timeTrialScore <= 360) {
+                        secondNum = (int) (Math.random() * 100);
+                    } else if (timeTrialScore <= 400) {
+                        secondNum = (int) (Math.random() * 1000);
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            secondNum = (int) (Math.random() * 100);
+                        } else {
+                            secondNum = (int) (Math.random() * 1000);
+                        }
+                    }
+                }
+                while (firstNum % secondNum != 0) {
+                    if (timeTrialScore <= 200) {
+                        secondNum = (int) (Math.random() * 10);
+                        if (secondNum == 0) {
+                            while (secondNum == 0) {
+                                secondNum = (int) (Math.random() * 10);
+                            }
+                        }
+                    } else if (timeTrialScore <= 360) {
+                        secondNum = (int) (Math.random() * 100);
+                        if (secondNum == 0) {
+                            while (secondNum == 0) {
+                                secondNum = (int) (Math.random() * 100);
+                            }
+                        }
+                    } else if (timeTrialScore <= 400) {
+                        secondNum = (int) (Math.random() * 1000);
+                        if (secondNum == 0) {
+                            while (secondNum == 0) {
+                                secondNum = (int) (Math.random() * 1000);
+                            }
+                        }
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            secondNum = (int) (Math.random() * 100);
+                            if (secondNum == 0) {
+                                while (secondNum == 0) {
+                                    secondNum = (int) (Math.random() * 100);
+                                }
+                            }
+                        } else {
+                            secondNum = (int) (Math.random() * 1000);
+                            if (secondNum == 0) {
+                                while (secondNum == 0) {
+                                    secondNum = (int) (Math.random() * 1000);
+                                }
+                            }
+                        }
+                    }
+                }
+                correctAnswer = firstNum / secondNum;
+            } else {
+                while (firstNum == 0) {
+                    if (timeTrialScore <= 200) {
+                        firstNum = (int) (Math.random() * 10);
+                    } else if (timeTrialScore <= 360) {
+                        firstNum = (int) (Math.random() * 100);
+                    } else if (timeTrialScore <= 400) {
+                        firstNum = (int) (Math.random() * 1000);
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            firstNum = (int) (Math.random() * 100);
+                        } else {
+                            firstNum = (int) (Math.random() * 1000);
+                        }
+                    }
+                }
+                while (secondNum % firstNum != 0) {
+                    if (timeTrialScore <= 200) {
+                        firstNum = (int) (Math.random() * 10);
+                        if (firstNum == 0) {
+                            while (firstNum == 0) {
+                                firstNum = (int) (Math.random() * 10);
+                            }
+                        }
+                    } else if (timeTrialScore <= 360) {
+                        firstNum = (int) (Math.random() * 100);
+                        if (firstNum == 0) {
+                            while (firstNum == 0) {
+                                firstNum = (int) (Math.random() * 100);
+                            }
+                        }
+                    } else if (timeTrialScore <= 400) {
+                        firstNum = (int) (Math.random() * 1000);
+                        if (firstNum == 0) {
+                            while (firstNum == 0) {
+                                firstNum = (int) (Math.random() * 1000);
+                            }
+                        }
+                    } else {
+                        if (multiOrDivide <= 5) {
+                            firstNum = (int) (Math.random() * 100);
+                            if (firstNum == 0) {
+                                while (firstNum == 0) {
+                                    firstNum = (int) (Math.random() * 100);
+                                }
+                            }
+                        } else {
+                            firstNum = (int) (Math.random() * 1000);
+                            if (firstNum == 0) {
+                                while (firstNum == 0) {
+                                    firstNum = (int) (Math.random() * 1000);
+                                }
+                            }
+                        }
+                    }
+                }
+                correctAnswer = secondNum / firstNum;
             }
         }
         return correctAnswer;
