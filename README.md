@@ -16,3 +16,5 @@ All scores are uploaded to the leaderboards if you are logged in to the applicat
 
 This app was designed to play math game and compete with others on the leaderboards, this app will have updates as
 new features in the future.
+
+Check it out at [Mathmanica](https://sirajsaleem.com/apps/mathmanica/mathmanica.html)
