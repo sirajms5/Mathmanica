@@ -470,6 +470,8 @@ public class SettingsActivity extends AppCompatActivity implements MethodsFactor
                         String logIn = "Log in/Register";
                         logInTxt.setText(logIn);
                         logInTxt.setClickable(true);
+                        logOutTxt.setVisibility(View.GONE);
+                        deleteAccount.setVisibility(View.GONE);
                         cancelationDialog.dismiss();
                         Snackbar.make(settingsLayout, currentUserName + getString(R.string.deleted), Snackbar.LENGTH_LONG)
                                 .setAction(R.string.dismiss, v -> {
